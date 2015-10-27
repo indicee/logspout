@@ -84,6 +84,7 @@ func (p *LogsPump) Setup() error {
 	endpoint := getopt("DOCKER_HOST", "unix:///var/run/docker.sock")
 	var client *docker.Client
 	var err error
+	// log.Println("DOCKER_TLS_VERIFY == ", os.Getenv("DOCKER_TLS_VERIFY"))
 	if os.Getenv("DOCKER_TLS_VERIFY") == "1" {
 		path := os.Getenv("DOCKER_CERT_PATH")
 		client, err = docker.NewTLSClient(endpoint,
